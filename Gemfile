@@ -1,5 +1,4 @@
-source 'https://rubygems.org'
-
+source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -30,7 +29,8 @@ gem 'active_skin'
 # gem "meta_search"
 gem "carrierwave"
 gem 'mini_magick'
-gem 'puma'
+# gem 'puma'
+gem "tzinfo-data"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
