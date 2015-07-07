@@ -11,5 +11,35 @@
  * file per style scope.
  *
  *= require_tree .
+ *= stub active_admin
  *= require_self
  */
+
+div.pull-down{
+	margin-top: 10%;
+	margin-bottom: 15%;
+}
+.header{
+	.navbar{
+		margin-bottom: 0px !important;
+	}
+}
+
+.head{
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+a.danger{
+	color: #e74c3c;
+}
+
+.footer{
+	text-align: center;
+	background-color: #4A6681;
+	h2{
+		color: #efefef;
+		margin-top: -2px;
+		margin-bottom: -2px;
+	}
+}

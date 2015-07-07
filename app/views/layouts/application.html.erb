@@ -3,15 +3,8 @@
 <head>
 	<title>AseanTravel</title>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
-	
-	<link href="assets/vendor/bootstrap.min.css" rel="stylesheet">
-   <link href="assets/flat-ui.css" rel="stylesheet">
-   <link rel="shortcut icon" href="img/favicon.ico">
-   
-   <script src="assets/vendor/video.js"></script>
-	<script src="assets/flat-ui.js"></script>
 </head>
 
 <body>
@@ -22,13 +15,13 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
             </button>
-            <a class="navbar-brand" href="#">Flat UI</a>
+            <%= link_to("Asean Travel", root_path , :class => "navbar-brand") %>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <%= nav_link 'Home', root_path %>
+              <%= nav_link 'About', about_path %>
+              <%= nav_link 'Contact', contact_path %>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -43,25 +36,36 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="../navbar/">Default</a></li>
-              <li class="active"><a href="./">Static top</a></li>
-              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+              <% if user_signed_in? %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong><%= current_user.email %></strong><b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to 'Edit profile', edit_user_registration_path %> </li>
+                    <li class="divider"></li>
+                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
+                  </ul>
+                </li>
+              <% else %>
+                <li><%= link_to "Sign up", new_user_registration_path %> </li>
+                <li><%= link_to "Login", new_user_session_path %> </li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
 	</div>
-<div class="container">
+<!-- <div class="container"> -->
 
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1">
+		<div class="col-md-12">
 			<%= yield %>
 		</div>
 	</div>
 
-	<div class="footer" style="width: 100%">
-		<h2>Footer</h2>
-	</div>
+<!-- </div> -->
+
+<div class="footer" style="width: 100%">
+	<h2>Footer</h2>
 </div>
 
 </body>

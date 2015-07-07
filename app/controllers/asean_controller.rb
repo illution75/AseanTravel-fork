@@ -1,9 +1,8 @@
 class AseanController < ApplicationController
   def index
-  	@a = "Hello World!"
-  	@admin = AdminUser.all
+  	@countries = Country.all
   end
-xcvxcv
+
   def contact
   end
 
